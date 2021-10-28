@@ -15,12 +15,15 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-console.log(uri);
 
 const run = async () => {
   try {
     await client.connect();
     console.log("DB is connected");
+
+    app.get("/services", (req, res) => {
+      res.send("SERVICES FILES IS OKEY GOOD TO GO");
+    });
   } finally {
     // client.close();
   }
