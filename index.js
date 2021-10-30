@@ -24,6 +24,7 @@ const run = async () => {
     const database = client.db("knock_knock_DB");
     const servicesCollection = database.collection("knock_knock_Services");
     const orderCollection = database.collection("order_collection");
+    const teamCollection = database.collection("our_team");
     // get all products
     app.get("/products", async (req, res) => {
       const query = await servicesCollection.find({}).toArray();
@@ -87,6 +88,12 @@ const run = async () => {
       };
       const result = await orderCollection.updateOne(filter, updateDoc);
       res.send(result);
+    });
+
+    // get team member
+    app.get("/team", async (req, res) => {
+      const query = await teamCollection.find({}).toArray();
+      res.send(query);
     });
   } finally {
     // client.close();
