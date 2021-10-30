@@ -38,6 +38,14 @@ const run = async () => {
       res.send(result);
     });
 
+    // add or post a product
+    app.post("/products", async (req, res) => {
+      const doc = req.body;
+      const result = await servicesCollection.insertOne(doc);
+      res.send(result);
+      console.log(result);
+    });
+
     // inseert order details
     app.post("/orders", async (req, res) => {
       const doc = req.body;
@@ -79,7 +87,6 @@ const run = async () => {
       };
       const result = await orderCollection.updateOne(filter, updateDoc);
       res.send(result);
-      console.log(result);
     });
   } finally {
     // client.close();
