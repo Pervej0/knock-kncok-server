@@ -25,6 +25,7 @@ const run = async () => {
     const servicesCollection = database.collection("knock_knock_Services");
     const orderCollection = database.collection("order_collection");
     const teamCollection = database.collection("our_team");
+
     // get all products
     app.get("/products", async (req, res) => {
       const query = await servicesCollection.find({}).toArray();
@@ -59,7 +60,6 @@ const run = async () => {
       const email = req.params.email;
       const result = await orderCollection.find({ email: email }).toArray();
       res.send(result);
-      // console.log("helllllowin", email);
     });
 
     // delete specific order
